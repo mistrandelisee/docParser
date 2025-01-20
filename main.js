@@ -69,7 +69,7 @@ function getMax( current , max ) {
          tableMap[x+'_'+y]= row['Character'];
       })
       // console.log(tableJson);
-      console.log(tableMap);
+      //console.log(tableMap);
       const max = tableJson.max;
       const max_x= max[xFieldKey];
       const max_y= max[yFieldKey];
