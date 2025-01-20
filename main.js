@@ -69,23 +69,27 @@ function getMax( current , max ) {
          tableMap[x+'_'+y]= row['Character'];
       })
       // console.log(tableJson);
-      // console.log(tableMap);
+      console.log(tableMap);
       const max = tableJson.max;
       const max_x= max[xFieldKey];
       const max_y= max[yFieldKey];
       const matrix = [];
-      for (let y = 0; y < max_y; y++) {
+      let infost = []
+      for (let y = max_y; y > 0; y--) {// y starts from end to start
         const array = [];
         let infos = ''
-        for (let x = 0; x < max_x; x++) {
+        for (let x = 0; x <=max_x; x++) { // x starts from start to end
           const info = tableMap[x+'_'+y] || ' '
           array.push(info);
           infos = infos + info;
           
         }
-        console.log(infos);
+        // console.log(infos);
         matrix.push(array);
+        infost.push(infos);
       }
+      console.log('\n');
+      infost.forEach((infos)=> console.log(infos));
       // console.log(matrix);
     } catch (error) {
       console.error(error.message);
@@ -93,4 +97,6 @@ function getMax( current , max ) {
   }
 const url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
 // readTextFile(url);
+// const url = 'https://docs.google.com/document/d/e/2PACX-1vRMx5YQlZNa3ra8dYYxmv-QIQ3YJe8tbI3kqcuC7lQiZm-CSEznKfN_HYNSpoXcZIV3Y_O3YoUB1ecq/pub'
+
 getData(url)
