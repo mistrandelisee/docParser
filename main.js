@@ -75,6 +75,7 @@ function getMax( current , max ) {
       const max_y= max[yFieldKey];
       const matrix = [];
       let infost = []
+      let output = ''
       for (let y = max_y; y > 0; y--) {// y starts from end to start
         const array = [];
         let infos = ''
@@ -87,16 +88,34 @@ function getMax( current , max ) {
         // console.log(infos);
         matrix.push(array);
         infost.push(infos);
+        output = output + '\n'+ infos;
       }
-      console.log('\n');
-      infost.forEach((infos)=> console.log(infos));
-      // console.log(matrix);
+      // console.log('\n');
+      // output = output + '\n';
+      // infost.forEach((infos)=> console.log(infos));
+
+
+      // console.log(output);
+      return {
+        matrix,
+        output,
+        infost
+      }
     } catch (error) {
       console.error(error.message);
     }
   }
-const url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
 // readTextFile(url);
 // const url = 'https://docs.google.com/document/d/e/2PACX-1vRMx5YQlZNa3ra8dYYxmv-QIQ3YJe8tbI3kqcuC7lQiZm-CSEznKfN_HYNSpoXcZIV3Y_O3YoUB1ecq/pub'
 
-getData(url)
+
+(async () => {
+  const url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
+  const {
+    matrix,
+    output,
+    infost
+  } = await getData(url)
+
+  console.log(output);
+})();
