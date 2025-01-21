@@ -76,7 +76,7 @@ function getMax( current , max ) {
       const matrix = [];
       let infost = []
       let output = ''
-      for (let y = max_y; y > 0; y--) {// y starts from end to start
+      for (let y = max_y; y >= 0; y--) {// y starts from end to start
         const array = [];
         let infos = ''
         for (let x = 0; x <=max_x; x++) { // x starts from start to end
